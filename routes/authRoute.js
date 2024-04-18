@@ -14,7 +14,7 @@ router.post('/register', registerController)
 
 router.post('/login',loginController)
 
-// Forgot Passsword
+// Forgot Passsword || POST
 
 router.post('/forgot-password',forgotPassswordController)
 
