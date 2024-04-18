@@ -100,6 +100,7 @@ export const loginController = async (req, res) => {
         email: user.email,
         phone: user.phone,
         adddress: user.address,
+        role: user.role,
       },
       token,
     });
@@ -115,48 +116,45 @@ export const loginController = async (req, res) => {
 
 //Forgot Passsword Controller
 
-export const forgotPassswordController = async(req,res) => {
+export const forgotPassswordController = async (req, res) => {
   try {
-    const {email,answer,newPassword}  = req.body
-    if(!email){
-      res.status(400).send({message : 'Email is Required'})
+    const { email, answer, newPassword } = req.body;
+    if (!email) {
+      res.status(400).send({ message: "Email is Required" });
     }
-    if(!answer){
-      res.status(400).send({message : 'Answer is Required'})
+    if (!answer) {
+      res.status(400).send({ message: "Answer is Required" });
     }
-    if(!newPassword){
-      res.status(400).send({message : 'New Password is Required'})
+    if (!newPassword) {
+      res.status(400).send({ message: "New Password is Required" });
     }
- // check 
- 
- const user = await userModel.findOne({email,answer})
- //validation
+    // check
 
- if(!user){
-  res.status(404).send({
-    success : false,
-    message : 'Wrong Email or Answer'
-  })
- }
+    const user = await userModel.findOne({ email, answer });
+    //validation
 
- const hashed = await hashPassword(newPassword)
- await userModel.findByIdAndUpdate(user._id,{ password: hashed})
- res.status(200).send({
-  success : true,
-  message : 'Password Reset Successfuly',
- })
- 
+    if (!user) {
+      res.status(404).send({
+        success: false,
+        message: "Wrong Email or Answer",
+      });
+    }
 
+    const hashed = await hashPassword(newPassword);
+    await userModel.findByIdAndUpdate(user._id, { password: hashed });
+    res.status(200).send({
+      success: true,
+      message: "Password Reset Successfuly",
+    });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).send({
-      success : false,
-      message : "Something went wrong",
-      error
-    })
+      success: false,
+      message: "Something went wrong",
+      error,
+    });
   }
-}
-
+};
 
 //test controller
 export const testController = (req, res) => {
