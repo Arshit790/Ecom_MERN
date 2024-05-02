@@ -244,7 +244,7 @@ export const productListController = async (req, res) => {
 
 // serach product
 
-export const searchProductController = async (res, req) => {
+export const searchProductController = async (req, res) => {
   try {
     const { keyword } = req.params;
     const result = await productModel

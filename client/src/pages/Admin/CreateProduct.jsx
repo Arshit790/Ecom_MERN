@@ -77,7 +77,7 @@ const CreateProduct = () => {
                 placeholder="Select a category"
                 size="large"
                 showSearch
-                className="form-select mb-3"
+                className="-select mb-3"
                 onChange={(value) => {
                   setCategory(value);
                 }}

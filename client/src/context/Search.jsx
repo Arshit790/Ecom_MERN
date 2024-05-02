@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState,useContext, createContext } from "react";
 
 const SearchContext = createContext();
@@ -18,5 +17,4 @@ const SearchProvider = ({ children }) => {
 };
 
 const useSearch = () => useContext(SearchContext);
-
 export { useSearch, SearchProvider };
