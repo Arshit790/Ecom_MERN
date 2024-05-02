@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Checkbox, Radio } from "antd";
@@ -10,7 +9,7 @@ import Layout from "./../components/Layout/Layout";
 import { AiOutlineReload } from "react-icons/ai";
 import "../styles/Homepage.css";
 
-const HomePage = () => {
+const Home = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useCart();
   const [products, setProducts] = useState([]);
@@ -224,4 +223,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;
